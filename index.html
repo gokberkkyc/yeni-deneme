@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kokopelli Coffee Co. | Nitelikli Kahve Dükkanı</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary-blue: #0A6B97;
+            --light-blue: #e8f4f8;
+            --dark-blue: #054a6b;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-color: #fdfbf7;
+            --accent: #d4a373;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* Fixed Background Pattern */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('Kokopellilogo.jpg');
+            background-repeat: repeat;
+            background-size: 150px;
+            opacity: 0.04;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-blue);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Cinematic Landing Frame */
+        .landing-frame {
+            margin: 25px auto 50px;
+            padding: 50px 20px 40px;
+            border: 4px solid var(--dark-blue);
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.85);
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            backdrop-filter: blur(5px);
+        }
+
+        .landing-frame::after {
+            content: '';
+            position: absolute;
+            top: 12px; left: 12px; right: 12px; bottom: 12px;
+            border: 1px dashed var(--primary-blue);
+            border-radius: 15px;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-container img {
+            max-width: 250px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .slogan {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        /* Split Media Layout (Video & Image side by side) */
+        .media-split {
+            display: flex;
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: stretch;
+        }
+
+        .media-item {
+            flex: 1;
+            padding: 12px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(10, 107, 151, 0.15);
+            position: relative;
+        }
+
+        .media-item::before {
+            content: '';
+            position: absolute;
+            top: -4px; left: -4px; right: -4px; bottom: -4px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--accent));
+            border-radius: 24px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .media-item video, .media-item img {
+            width: 100%;
+            height: 100%;
+            min-height: 450px;
+            max-height: 550px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+
+        /* About & Award Section */
+        .about-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin: 60px 0;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1 1 500px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .about-images {
+            flex: 1 1 400px;
+            display: flex;
+            gap: 20px;
+            flex-direction: column;
+        }
+
+        .about-images img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+        
+        .award-banner {
+            display: flex;
+            align-items: center;
+            background: var(--dark-blue);
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        
+        .award-banner img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            background: #fff;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid #fff;
+        }
+
+        /* Menu Section */
+        .menu-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 60px 0 30px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .menu-title::after {
+            content: '';
+            width: 60%;
+            height: 3px;
+            background: var(--accent);
+            position: absolute;
+            bottom: -10px;
+            left: 20%;
+        }
+
+        /* Expandable Menu (Accordion) Styles */
+        details.main-category {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(10, 107, 151, 0.1);
+        }
+        
+        details.main-category > summary {
+            background: var(--primary-blue);
+            color: #fff;
+            padding: 15px 25px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            border-radius: 10px;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        details.main-category > summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details.main-category > summary:hover {
+            background: var(--dark-blue);
+        }
+
+        details.main-category > summary::after {
+            content: '+';
+            font-size: 2rem;
+            line-height: 1;
+            font-family: 'Poppins', sans-serif;
+            transition: transform 0.3s ease;
+        }
+
+        details.main-category[open] > summary {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        details.main-category[open] > summary::after {
+            content: '\2212';
+        }
+
+        .main-category-content {
+            padding: 20px;
+            background: var(--bg-color);
+            border: 1px solid rgba(10, 107, 151, 0.1);
+            border-top: none;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        /* Sub Category Accordion */
+        details.sub-category {
+            margin-bottom: 15px;
+            border: 1px solid rgba(10,107,151,0.2);
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        details.sub-category > summary {
+            background: var(--light-blue);
+            color: var(--dark-blue);
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 12px 20px;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        details.sub-category > summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details.sub-category > summary::after {
+            content: '\25BC';
+            font-size: 0.9rem;
+        }
+
+        details.sub-category[open] > summary::after {
+            content: '\25B2';
+        }
+
+        .sub-category-content {
+            padding: 20px;
+        }
+
+        /* Grid inside content */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(10,107,151,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(10, 107, 151, 0.12);
+            border-color: var(--primary-blue);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .item-name {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            padding-right: 15px;
+        }
+
+        .item-price {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: 1.15rem;
+            white-space: nowrap;
+        }
+
+        .item-desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-style: italic;
+            line-height: 1.4;
+        }
+        
+        .item-desc strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Services & Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .info-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .info-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.95rem;
+        }
+        
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-blue);
+            color: #fff;
+            padding: 60px 20px 30px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-col h3 {
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 40px; height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-col p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: #d1e3ea;
+        }
+
+        .insta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: #fff;
+            color: var(--dark-blue);
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 15px;
+        }
+
+        .insta-link img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .insta-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            color: #E1306C; /* Insta pink */
+        }
+
+        .map-container {
+            width: 100%;
+            height: 250px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #a0b8c4;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .slogan { font-size: 1.5rem; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .about-section { flex-direction: column; }
+            .media-split { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-pattern"></div>
+
+    <div class="container">
+        
+        <!-- Cinematic Hero/Landing Section with Frame -->
+        <div class="landing-frame">
+            <div class="hero">
+                <div class="logo-container">
+                    <img src="image_fcf439.jpg" alt="Kokopelli Coffee Co. Logo">
+                </div>
+                <h1 class="slogan">Nitelikli Kahve Dükkanı</h1>
+                
+                <!-- Side by Side Layout for Video and Image -->
+                <div class="media-split">
+                    <div class="media-item">
+                        <video src="Kokopelli’de Japanase Cold Brew Demleme Tekniğinde ‘Colombia Resguardo’ Çekirdeği Sizlerle🥰.mp4" autoplay loop muted playsinline></video>
+                    </div>
+                    <div class="media-item">
+                        <img src="image_fd7b20.jpg" alt="Kokopelli İç Mekan Detay">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="about-section">
+            <div class="about-text">
+                <h2>Hakkımızda</h2>
+                <p>Sadece nitelikli kahve sunuyoruz; üç kıtadan dönüşümlü olarak seçtiğimiz çekirdeklerle 800'den fazla tadım profiline sahibiz.</p>
+                <p>Rezervasyon ile masada demleme deneyimi sunuyoruz. Kahve Akademimiz, hem temel hem de profesyonel barista eğitimleri vermektedir.</p>
+                <p>Tüm tatlılarımız günlük olarak taze hazırlanır ve aynı gün tüketilir.</p>
+                
+                <div class="award-banner">
+                    <img src="european.png" alt="European Coffee Trip App Featured Cafe">
+                    <div>
+                        <strong>Gururumuz</strong><br>
+                        European Coffee Trip App tarafından öne çıkarılan (Featured Cafe) nitelikli kahve noktalarından biriyiz!
+                    </div>
+                </div>
+            </div>
+            <div class="about-images">
+                <img src="Kokopelli1.png" alt="Kokopelli Coffee Co. İç Mekan">
+            </div>
+        </div>
+
+        <h2 class="menu-title">Menü</h2>
+
+        <!-- YÖRESEL VE NİTELİKLİ KAHVELER (Accordion) -->
+        <details class="main-category">
+            <summary>1. Yöresel ve Nitelikli Kahveler</summary>
+            <div class="main-category-content">
+                
+                <details class="sub-category">
+                    <summary>Special Coffee Brews (Nitelikli Çekirdekler)</summary>
+                    <div class="sub-category-content">
+                        <div class="menu-grid">
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Brezilya High Mogiano</span><span class="item-price">170,00₺</span></div><div class="item-desc">Kavrulmuş badem, kakao, portakal, karamel</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Uraga Anaerobic Natural</span><span class="item-price">200,00₺</span></div><div class="item-desc">Liçi, kiraz, limon, çilekli yoğurt, çikolata parçacıkları</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Brezilya Mantiquera</span><span class="item-price">170,00₺</span></div><div class="item-desc">Kakao, sütlü çikolata, mandalina, süt reçeli</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Gayo Sesongot</span><span class="item-price">200,00₺</span></div><div class="item-desc">Karadut, orman meyveleri, böğürtlen, yeşil zeytin, kestane</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kosta Rika El Quizarra</span><span class="item-price">170,00₺</span></div><div class="item-desc">Şeftali, portakal, kakule, kayısı, hafif çiçeksi, çikolatalı kek</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Bona Zuria</span><span class="item-price">200,00₺</span></div><div class="item-desc">Şarapsı, kırmızı elma, kırmızı erik, bitter çikolata</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Brezilya Chelbesa</span><span class="item-price">180,00₺</span></div><div class="item-desc">Lime, ahududu, bal, vanilya, çiçeksi</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Guji Dimtu</span><span class="item-price">200,00₺</span></div><div class="item-desc">Şeftali, portakal, çiçeksi, frambuaz, lavanta</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Brezilya Sitio Cafundo Natural</span><span class="item-price">180,00₺</span></div><div class="item-desc">Çikolata, kakao, fındık, karamel</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Kaffa Gudina</span><span class="item-price">210,00₺</span></div><div class="item-desc">Üzüm reçeli, şarapsı, kırmızı erik, incir, şampanya</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Honduras Carlos Mejia</span><span class="item-price">180,00₺</span></div><div class="item-desc">Böğürtlen, erik</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Koke</span><span class="item-price">210,00₺</span></div><div class="item-desc">Manolya, kızılcık, böğürtlen, kakao nibi, vişne</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya İdido Prime</span><span class="item-price">180,00₺</span></div><div class="item-desc">Kiraz, rom, yasemin, bergamot, turunçgil</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Santiago Noriega Washed/Anaerobic</span><span class="item-price">210,00₺</span></div><div class="item-desc">Beyaz çiçekler, muzlu kek, kavun, kayısı, ananas</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Nicaragua Las Segovias</span><span class="item-price">180,00₺</span></div><div class="item-desc">Damla çikolata, kuru erik, ceviz, karamel, krema tatlılığı</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Endonezya Lestari</span><span class="item-price">220,00₺</span></div><div class="item-desc">Çiçek balı, sümbül, yasemin, frambuazlı danish</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kosta Rika Las Lajas</span><span class="item-price">180,00₺</span></div><div class="item-desc">Limon otu, mandalina, şeftali, kırmızı elma, bademli çikolata, likör</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Monica Rodriguez Rojas Las Acacias Natural</span><span class="item-price">220,00₺</span></div><div class="item-desc">Tropik meyveler, mango, frambuaz, pamuk şekeri, yaban mersini</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Jose Hernan Quintero Honey Double Anaerobic</span><span class="item-price">200,00₺</span></div><div class="item-desc">Çiçeksi, kuşburnu, fındıklı pralin, elma, karadut</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Biloya</span><span class="item-price">230,00₺</span></div><div class="item-desc">Erik, kayısı, şekerleme, karadut</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kenya Moganjo</span><span class="item-price">200,00₺</span></div><div class="item-desc">İtalyan eriği, kara böğürtlen, cezerye, sütlü çikolata</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Sebastian Ramirez El Placer</span><span class="item-price">240,00₺</span></div><div class="item-desc">Baharatsı, çiçeksi, tropik meyveler, paprikalı doritos, meksika tacosu gibi</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Aricha</span><span class="item-price">200,00₺</span></div><div class="item-desc">Portakal, bal, yasemin, bergamot</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Guiterrez Family Monte Verde</span><span class="item-price">240,00₺</span></div><div class="item-desc">Zambak, orman meyvesi reçeli, bal, kremamsı</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Monica Rodriguez Rojas</span><span class="item-price">200,00₺</span></div><div class="item-desc">Bodrum mandalinası, kuru üzüm, mor çiçekler, ahududu reçeli</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Yaye</span><span class="item-price">240,00₺</span></div><div class="item-desc">Tropikal şeftali, çiçeksi, kavun</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Beloya Oro Yeast Natural</span><span class="item-price">200,00₺</span></div><div class="item-desc">Yasemin, vanilya, armut, liçi, çilek, muz</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Uraga Oro</span><span class="item-price">200,00₺</span></div><div class="item-desc">Vanilya, çilek, muz, tropik meyveler</div></div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="sub-category">
+                    <summary>Super Special Coffee Brews (Premium & Fermente Serisi)</summary>
+                    <div class="sub-category-content">
+                        <div class="menu-grid">
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Risaralda</span><span class="item-price">220,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> meyvemsi tatlı, yeşil nane. <strong>Damakta:</strong> dağ çileği, yoğun çilek reçeli. <strong>Bitişte:</strong> çikolata, yoğun ve kompleks</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Rodrigo Sanchez Pina Colada</span><span class="item-price">260,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> vanilya, çikolata tatlılığı. <strong>Damakta:</strong> ananas, hindistan cevizi. <strong>Bitişte:</strong> likör, tropik meyveler</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Brezilya Luiz Garcia</span><span class="item-price">240,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> meyvemsi tatlı, yeşil nane. <strong>Damakta:</strong> dağ çileği, yoğun çilek reçeli. <strong>Bitişte:</strong> çikolata, yoğun ve kompleks</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Santa Monica Jairo Arcila</span><span class="item-price">260,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> meyvemsi tatlı, yeşil nane. <strong>Damakta:</strong> dağ çileği, yoğun çilek reçeli. <strong>Bitişte:</strong> çikolata, yoğun ve kompleks</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Tolima Geisha</span><span class="item-price">260,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> meyvemsi tatlı, yeşil nane. <strong>Damakta:</strong> dağ çileği, yoğun çilek reçeli. <strong>Bitişte:</strong> çikolata, yoğun ve kompleks</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Monteblanco Ex Limited</span><span class="item-price">240,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> sarı meyve salatası. <strong>Damakta:</strong> kavunlu milkshake, muzlu sakız. <strong>Bitişte:</strong> ananas, şeftali, nektarin</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Damo Anaerobik Natural</span><span class="item-price">280,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> kırmızı orman meyveleri, egzotik. <strong>Damakta:</strong> böğürtlen, vişne, karadut, malbec şarabı. <strong>Bitişte:</strong> mango, narenciye, çarkıfelek meyvesi</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Java Abisinya</span><span class="item-price">240,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> meyvemsi tatlı, yeşil nane. <strong>Damakta:</strong> dağ çileği, yoğun çilek reçeli. <strong>Bitişte:</strong> çikolata, yoğun ve kompleks</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Las Palmas Co-Fermantation Strawberry</span><span class="item-price">280,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> kuru çilek, yabanmersini. <strong>Damakta:</strong> karadut, vanilya, kuru çilek marmelatı. <strong>Bitişte:</strong> kırmızı meyve salatası</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya San Adolfo Geisha</span><span class="item-price">240,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> çiçek buketi, hanımeli notaları. <strong>Damakta:</strong> şeftali, mango. <strong>Bitişte:</strong> güçlü yasemin</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya La Sirena Osmotic Fermantation</span><span class="item-price">300,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> tamek meyve suyu, oolong çayı. <strong>Damakta:</strong> kayısı reçeli, olgun şeftali, tek çekirdekli sarı meyveler. <strong>Bitiş:</strong> esmer şeker, akçaağaç şurubu</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Hawai Kona Prime</span><span class="item-price">240,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> meyvemsi tatlı, yeşil nane. <strong>Damakta:</strong> dağ çileği, yoğun çilek reçeli. <strong>Bitişte:</strong> çikolata, yoğun ve kompleks</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya El Diviso Ombligon</span><span class="item-price">300,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> kırmızı meyve aromaları. <strong>Damakta:</strong> naneli sakız, haribo şeker. <strong>Bitişte:</strong> çilekli lolipop, şeker tatlılığı</div></div>
+                        </div>
+                    </div>
+                </details>
+
+            </div>
+        </details>
+
+        <!-- SICAK İÇECEKLER (Accordion) -->
+        <details class="main-category">
+            <summary>2. Sıcak İçecekler</summary>
+            <div class="main-category-content">
+                
+                <details class="sub-category">
+                    <summary>Espresso Bazlı Klasikler</summary>
+                    <div class="sub-category-content">
+                        <div class="menu-grid">
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Espresso</span><span class="item-price">130,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Double Espresso</span><span class="item-price">135,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Cortado</span><span class="item-price">145,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Americano</span><span class="item-price">150,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Cafe Latte</span><span class="item-price">150,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Latte Macchiato</span><span class="item-price">150,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Cappuccino</span><span class="item-price">150,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Flat White</span><span class="item-price">155,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Caramel Macchiato</span><span class="item-price">155,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Chai Tea Latte</span><span class="item-price">155,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Ristretto Bianco</span><span class="item-price">160,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Bio Americano</span><span class="item-price">160,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Mocha</span><span class="item-price">165,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">White Mocha (İsteğe bağlı tarçın)</span><span class="item-price">165,00₺</span></div></div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="sub-category">
+                    <summary>3. Nesil Demlemeler & Geleneksel</summary>
+                    <div class="sub-category-content">
+                        <div class="menu-grid">
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Türk Kahvesi</span><span class="item-price">125,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Red Eye</span><span class="item-price">155,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Black Eye</span><span class="item-price">165,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Filtre Kahve</span><span class="item-price">170,00₺</span></div></div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="sub-category">
+                    <summary>Avusturya Klasikleri</summary>
+                    <div class="sub-category-content">
+                        <div class="menu-grid">
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Franzıskaner</span><span class="item-price">180,00₺</span></div><div class="item-desc">7gr toblerone, 30ml espresso(single), süt, el yapımı krema</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kalschıtzky</span><span class="item-price">180,00₺</span></div><div class="item-desc">6gr bal, 30ml espresso(single), süt, el yapımı krema</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kaldı</span><span class="item-price">180,00₺</span></div><div class="item-desc">8gr orman meyvesi püresi, 30ml espresso(single), süt, el yapımı krema</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Mozart</span><span class="item-price">180,00₺</span></div><div class="item-desc">7gr eritilmiş beyaz çikolata, 30ml espresso(single), süt, el yapımı krema</div></div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="sub-category">
+                    <summary>Koko Spesiyalleri</summary>
+                    <div class="sub-category-content">
+                        <div class="menu-grid">
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Toffee Nut</span><span class="item-price">180,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Pumpkin</span><span class="item-price">180,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Mint Choco</span><span class="item-price">180,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Cookie Latte</span><span class="item-price">180,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Irish Cream Latte</span><span class="item-price">180,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Salted Caramel</span><span class="item-price">180,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Nutella</span><span class="item-price">190,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Kinder</span><span class="item-price">190,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Pistachio Latte</span><span class="item-price">195,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Martini'siz Martini</span><span class="item-price">200,00₺</span></div></div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="sub-category">
+                    <summary>Nitelikli & Klasik Sıcak Çaylar</summary>
+                    <div class="sub-category-content">
+                        <div class="menu-grid">
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Klasik Çay</span><span class="item-price">65,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Red Berry</span><span class="item-price">165,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Last Unicorn</span><span class="item-price">165,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Cold Play</span><span class="item-price">165,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Summer Time</span><span class="item-price">165,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Yeni Yıl</span><span class="item-price">165,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Tea'na Colada</span><span class="item-price">165,00₺</span></div></div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="sub-category">
+                    <summary>Kahve Dışı Sıcak Lezzetler</summary>
+                    <div class="sub-category-content">
+                        <div class="menu-grid">
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Ballı Süt</span><span class="item-price">145,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Salep</span><span class="item-price">180,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Sıcak Çikolata</span><span class="item-price">180,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Beyaz Sıcak Çikolata</span><span class="item-price">180,00₺</span></div></div>
+                        </div>
+                    </div>
+                </details>
+
+            </div>
+        </details>
+
+        <!-- SOĞUK İÇECEKLER (Accordion) -->
+        <details class="main-category">
+            <summary>3. Soğuk İçecekler</summary>
+            <div class="main-category-content">
+                
+                <details class="sub-category">
+                    <summary>Buzlu Espresso Bazlı Kahveler</summary>
+                    <div class="sub-category-content">
+                        <div class="menu-grid">
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Cortado</span><span class="item-price">130,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Latte</span><span class="item-price">135,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Latte Macchiato</span><span class="item-price">135,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Americano</span><span class="item-price">135,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Flat White</span><span class="item-price">140,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Caramel Macchiato</span><span class="item-price">140,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Chai Tea Latte</span><span class="item-price">140,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Bio Americano</span><span class="item-price">145,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Mocha</span><span class="item-price">150,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Beyaz Mocha</span><span class="item-price">150,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Affogato</span><span class="item-price">195,00₺</span></div></div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="sub-category">
+                    <summary>3. Nesil Soğuk Demlemeler (Cold Brews)</summary>
+                    <div class="sub-category-content">
+                        <div class="menu-grid">
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Black Eye</span><span class="item-price">140,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Red Eye</span><span class="item-price">145,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Dead Eye</span><span class="item-price">150,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Filtre Kahve</span><span class="item-price">160,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Hawaii Cold Brew</span><span class="item-price">165,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Cold Brew Latte</span><span class="item-price">175,00₺</span></div></div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="sub-category">
+                    <summary>Frappe Dünyası (Kahve Özlü)</summary>
+                    <div class="sub-category-content">
+                        <div class="menu-grid">
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Espresso Frappe</span><span class="item-price">175,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Beyaz Çikolatalı Frappe</span><span class="item-price">175,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Karamel Frappe</span><span class="item-price">175,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Toffee Nut Frappe</span><span class="item-price">175,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Pumpkin Frappe</span><span class="item-price">175,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Kinder Frappe</span><span class="item-price">175,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Schokolade Frappe</span><span class="item-price">175,00₺</span></div></div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="sub-category">
+                    <summary>Frappe Dünyası (Süt Özlü / Kahvesiz)</summary>
+                    <div class="sub-category-content">
+                        <div class="menu-grid">
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Vanilya Frappe</span><span class="item-price">165,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Frambuaz Frappe</span><span class="item-price">165,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Çilek Frappe</span><span class="item-price">165,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Karamel Frappe</span><span class="item-price">165,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Muz Frappe</span><span class="item-price">165,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kinder Frappe</span><span class="item-price">165,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Toffee Nut Frappe</span><span class="item-price">165,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Chai Tea Latte Frappe</span><span class="item-price">165,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Schokolade Frappe</span><span class="item-price">165,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Çikolatalı Frappe</span><span class="item-price">165,00₺</span></div></div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="sub-category">
+                    <summary>Milkshake & El Yapımı Soğuk Çaylar</summary>
+                    <div class="sub-category-content">
+                        <div class="menu-grid">
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Milkshake (Çikolata, Çilek, Muz)</span><span class="item-price">190,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Kırmızı Çay (Şeftali, Frambuaz, Mango)</span><span class="item-price">170,00₺</span></div><div class="item-desc">2 Bardak servis edilir</div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Naneli Yeşil Çay (Şeftali, Frambuaz, Mango)</span><span class="item-price">170,00₺</span></div><div class="item-desc">2 Bardak servis edilir</div></div>
+                        </div>
+                    </div>
+                </details>
+                
+                <details class="sub-category">
+                    <summary>Meşrubatlar</summary>
+                    <div class="sub-category-content">
+                        <div class="menu-grid">
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Su</span><span class="item-price">45,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Maden Suyu</span><span class="item-price">60,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Uludağ Gazoz</span><span class="item-price">65,00₺</span></div></div>
+                            <div class="menu-item"><div class="item-header"><span class="item-name">Avşar Meyveli Soda</span><span class="item-price">65,00₺</span></div></div>
+                        </div>
+                    </div>
+                </details>
+
+            </div>
+        </details>
+
+        <!-- EKSTRALAR (Accordion) -->
+        <details class="main-category">
+            <summary>4. Ekstralar</summary>
+            <div class="main-category-content">
+                <div class="menu-grid">
+                    <div class="menu-item"><div class="item-header"><span class="item-name">Espresso Shot</span><span class="item-price">80,00₺</span></div></div>
+                    <div class="menu-item"><div class="item-header"><span class="item-name">Şurup</span><span class="item-price">80,00₺</span></div></div>
+                    <div class="menu-item"><div class="item-header"><span class="item-name">Krema</span><span class="item-price">80,00₺</span></div></div>
+                    <div class="menu-item"><div class="item-header"><span class="item-name">Bal</span><span class="item-price">80,00₺</span></div></div>
+                    <div class="menu-item"><div class="item-header"><span class="item-name">Süt</span><span class="item-price">80,00₺</span></div></div>
+                </div>
+            </div>
+        </details>
+
+        <!-- Services & Info Grid -->
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Sunduklarımız</h3>
+                <ul class="info-list">
+                    <li>Espresso</li>
+                    <li>Filtre Kahve</li>
+                    <li>Soğuk Demleme (Cold Brew/Drip)</li>
+                    <li>Kafeinsiz Kahve</li>
+                    <li>Bitkisel Süt</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h3>Hizmetlerimiz</h3>
+                <ul class="info-list">
+                    <li>Ücretsiz Wi-Fi</li>
+                    <li>Bilgisayarla Çalışmaya Uygun</li>
+                    <li>Çocuklara Uygun Atmosfer</li>
+                    <li>Evcil Hayvan Dostu</li>
+                    <li>Açık Havada Oturma Alanı</li>
+                    <li>Kredi Kartı Geçerli</li>
+                    <li>Tekerlekli Sandalye Erişimine Uygun</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h3>Çalışma Saatleri</h3>
+                <ul class="hours-list">
+                    <li><span>Pazartesi</span> <span>10:00 - 23:59</span></li>
+                    <li><span>Salı</span> <span>10:00 - 23:59</span></li>
+                    <li><span>Çarşamba</span> <span>10:00 - 23:59</span></li>
+                    <li><span>Perşembe</span> <span>10:00 - 23:59</span></li>
+                    <li><span>Cuma</span> <span>10:00 - 23:59</span></li>
+                    <li><span>Cumartesi</span> <span>10:00 - 23:59</span></li>
+                    <li><span>Pazar</span> <span>10:00 - 23:59</span></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>İletişim</h3>
+                <p><strong>Adres:</strong><br> İstiklal, Sökmen Sk. No:7/B,<br> 26040 Odunpazarı / Eskişehir</p>
+                <p><strong>Telefon:</strong><br> <a href="tel:05529432416" style="color:#d1e3ea; text-decoration:none;">0552 943 24 16</a></p>
+                
+                <a href="https://www.instagram.com/kokopellicoffeeco" target="_blank" class="insta-link">
+                    <img src="Insta.png" alt="Instagram">
+                    Bizi Takip Edin
+                </a>
+            </div>
+            <div class="footer-col">
+                <h3>Konum</h3>
+                <div class="map-container">
+                    <!-- Google Maps Iframe for the specific address -->
+                    <iframe src="https://maps.google.com/maps?q=İstiklal,+Sökmen+Sk.+No:7/B,+26040+Odunpazarı/Eskişehir&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Kokopelli Coffee Co. - Tüm Hakları Saklıdır.
+        </div>
+    </footer>
+
+</body>
+</html>
