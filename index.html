@@ -31,7 +31,7 @@
             position: relative;
         }
 
-        /* Fixed Background Pattern */
+        /* Fixed Background Pattern (Opacity Increased from 0.04 to 0.08) */
         .bg-pattern {
             position: fixed;
             top: 0;
@@ -41,7 +41,7 @@
             background-image: url('Kokopellilogo.jpg');
             background-repeat: repeat;
             background-size: 150px;
-            opacity: 0.04;
+            opacity: 0.08; 
             z-index: -1;
             pointer-events: none;
         }
@@ -125,109 +125,17 @@
             display: block;
         }
 
-        /* Refreshed About Section */
-        .about-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin: 80px auto;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 50px;
-            border-radius: 40px;
-            box-shadow: 0 25px 50px rgba(10, 107, 151, 0.08);
-            border: 1px solid rgba(10, 107, 151, 0.1);
-            max-width: 1050px; 
-        }
-
-        .about-text {
-            flex: 1 1 450px;
-            padding-right: 20px;
-        }
-
-        .about-text h2 {
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .about-text h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-
-        .about-text p {
-            font-size: 1.05rem;
-            margin-bottom: 18px;
-            color: var(--text-dark);
-            opacity: 0.9;
-        }
-
-        .about-images {
-            flex: 1 1 400px;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-        }
-
-        .about-images img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-        
-        .about-images img:hover {
-            transform: scale(1.03); 
-        }
-        
-        .award-banner {
-            display: flex;
-            align-items: center;
-            background: var(--light-blue);
-            color: var(--dark-blue);
-            padding: 15px 25px;
-            border-radius: 20px;
-            margin-top: 30px;
-            border: 1px solid rgba(10, 107, 151, 0.15);
-            transition: transform 0.3s ease;
-        }
-        
-        .award-banner:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(10, 107, 151, 0.1);
-        }
-        
-        .award-banner img {
-            width: 55px;
-            height: 55px;
-            object-fit: contain;
-            background: #fff;
-            border-radius: 50%;
-            margin-right: 18px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-        }
-        
-        .award-banner strong {
-            color: var(--primary-blue);
-            font-size: 1.1rem;
-            display: block;
-            margin-bottom: 2px;
-        }
-
         /* Menu Section */
+        .menu-wrapper {
+            position: relative;
+            z-index: 2;
+            scroll-margin-top: 20px; /* Gives breathing room when anchored */
+        }
+
         .menu-title {
             text-align: center;
             font-size: 2.5rem;
-            margin: 60px 0 30px;
+            margin: 20px 0 30px;
             position: relative;
             display: inline-block;
             left: 50%;
@@ -395,12 +303,114 @@
             font-weight: 600;
         }
 
+        /* Refreshed About Section */
+        .about-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin: 80px auto;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px;
+            border-radius: 40px;
+            box-shadow: 0 25px 50px rgba(10, 107, 151, 0.08);
+            border: 1px solid rgba(10, 107, 151, 0.1);
+            max-width: 1050px; 
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-text {
+            flex: 1 1 450px;
+            padding-right: 20px;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            margin-bottom: 18px;
+            color: var(--text-dark);
+            opacity: 0.9;
+        }
+
+        .about-images {
+            flex: 1 1 400px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        .about-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-images img:hover {
+            transform: scale(1.03); 
+        }
+        
+        .award-banner {
+            display: flex;
+            align-items: center;
+            background: var(--light-blue);
+            color: var(--dark-blue);
+            padding: 15px 25px;
+            border-radius: 20px;
+            margin-top: 30px;
+            border: 1px solid rgba(10, 107, 151, 0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .award-banner:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(10, 107, 151, 0.1);
+        }
+        
+        .award-banner img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            background: #fff;
+            border-radius: 50%;
+            margin-right: 18px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+        }
+        
+        .award-banner strong {
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 2px;
+        }
+
         /* Services & Info Grid */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             margin: 60px 0;
+            position: relative;
+            z-index: 2;
         }
 
         .info-card {
@@ -448,6 +458,8 @@
             color: #fff;
             padding: 60px 20px 30px;
             margin-top: 60px;
+            position: relative;
+            z-index: 2;
         }
 
         .footer-content {
@@ -527,6 +539,11 @@
             font-size: 0.85rem;
         }
 
+        /* Mobile Menu Sticky Button (Hidden on Desktop) */
+        .mobile-menu-btn {
+            display: none;
+        }
+
         /* ---------------------------------- */
         /* TELEFON (MOBİL) UYUMLULUK          */
         /* ---------------------------------- */
@@ -536,6 +553,10 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding-bottom: 70px; /* Gives space for the sticky menu button */
+            }
+
             .slogan { 
                 font-size: 1.5rem; 
                 margin-bottom: 30px; 
@@ -555,6 +576,30 @@
             .media-item video, .media-item img { 
                 min-height: 250px; 
                 max-height: 350px; 
+            }
+
+            /* Sticky Mobile Button */
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background-color: var(--accent);
+                color: #fff;
+                padding: 12px 24px;
+                border-radius: 30px;
+                text-decoration: none;
+                font-weight: 600;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+                z-index: 9999;
+                transition: transform 0.3s ease;
+                font-size: 1rem;
+            }
+
+            .mobile-menu-btn:active {
+                transform: scale(0.95);
             }
 
             .about-section { 
@@ -681,6 +726,280 @@
             </div>
         </div>
 
+        <div id="menu-section" class="menu-wrapper">
+            <h2 class="menu-title">Menü</h2>
+
+            <details class="main-category">
+                <summary>1. Yöresel ve Nitelikli Kahveler</summary>
+                <div class="main-category-content">
+                    
+                    <details class="sub-category">
+                        <summary>Special Coffee Brews (Nitelikli Çekirdekler)</summary>
+                        <div class="sub-category-content">
+                            <div class="menu-grid">
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Brezilya High Mogiano</span><span class="item-price">170,00₺</span></div><div class="item-desc">Kavrulmuş badem, kakao, portakal, karamel</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Uraga Anaerobic Natural</span><span class="item-price">200,00₺</span></div><div class="item-desc">Liçi, kiraz, limon, çilekli yoğurt, çikolata parçacıkları</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Brezilya Mantiquera</span><span class="item-price">170,00₺</span></div><div class="item-desc">Kakao, sütlü çikolata, mandalina, süt reçeli</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Gayo Sesongot</span><span class="item-price">200,00₺</span></div><div class="item-desc">Karadut, orman meyveleri, böğürtlen, yeşil zeytin, kestane</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kosta Rika El Quizarra</span><span class="item-price">170,00₺</span></div><div class="item-desc">Şeftali, portakal, kakule, kayısı, hafif çiçeksi, çikolatalı kek</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Bona Zuria</span><span class="item-price">200,00₺</span></div><div class="item-desc">Şarapsı, kırmızı elma, kırmızı erik, bitter çikolata</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Brezilya Chelbesa</span><span class="item-price">180,00₺</span></div><div class="item-desc">Lime, ahududu, bal, vanilya, çiçeksi</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Guji Dimtu</span><span class="item-price">200,00₺</span></div><div class="item-desc">Şeftali, portakal, çiçeksi, frambuaz, lavanta</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Brezilya Sitio Cafundo Natural</span><span class="item-price">180,00₺</span></div><div class="item-desc">Çikolata, kakao, fındık, karamel</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Kaffa Gudina</span><span class="item-price">210,00₺</span></div><div class="item-desc">Üzüm reçeli, şarapsı, kırmızı erik, incir, şampanya</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Honduras Carlos Mejia</span><span class="item-price">180,00₺</span></div><div class="item-desc">Böğürtlen, erik</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Koke</span><span class="item-price">210,00₺</span></div><div class="item-desc">Manolya, kızılcık, böğürtlen, kakao nibi, vişne</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya İdido Prime</span><span class="item-price">180,00₺</span></div><div class="item-desc">Kiraz, rom, yasemin, bergamot, turunçgil</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Santiago Noriega Washed/Anaerobic</span><span class="item-price">210,00₺</span></div><div class="item-desc">Beyaz çiçekler, muzlu kek, kavun, kayısı, ananas</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Nicaragua Las Segovias</span><span class="item-price">180,00₺</span></div><div class="item-desc">Damla çikolata, kuru erik, ceviz, karamel, krema tatlılığı</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Endonezya Lestari</span><span class="item-price">220,00₺</span></div><div class="item-desc">Çiçek balı, sümbül, yasemin, frambuazlı danish</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kosta Rika Las Lajas</span><span class="item-price">180,00₺</span></div><div class="item-desc">Limon otu, mandalina, şeftali, kırmızı elma, bademli çikolata, likör</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Monica Rodriguez Rojas Las Acacias Natural</span><span class="item-price">220,00₺</span></div><div class="item-desc">Tropik meyveler, mango, frambuaz, pamuk şekeri, yaban mersini</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Jose Hernan Quintero Honey Double Anaerobic</span><span class="item-price">200,00₺</span></div><div class="item-desc">Çiçeksi, kuşburnu, fındıklı pralin, elma, karadut</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Biloya</span><span class="item-price">230,00₺</span></div><div class="item-desc">Erik, kayısı, şekerleme, karadut</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kenya Moganjo</span><span class="item-price">200,00₺</span></div><div class="item-desc">İtalyan eriği, kara böğürtlen, cezerye, sütlü çikolata</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Sebastian Ramirez El Placer</span><span class="item-price">240,00₺</span></div><div class="item-desc">Baharatsı, çiçeksi, tropik meyveler, paprikalı doritos, meksika tacosu gibi</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Aricha</span><span class="item-price">200,00₺</span></div><div class="item-desc">Portakal, bal, yasemin, bergamot</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Guiterrez Family Monte Verde</span><span class="item-price">240,00₺</span></div><div class="item-desc">Zambak, orman meyvesi reçeli, bal, kremamsı</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Monica Rodriguez Rojas</span><span class="item-price">200,00₺</span></div><div class="item-desc">Bodrum mandalinası, kuru üzüm, mor çiçekler, ahududu reçeli</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Yaye</span><span class="item-price">240,00₺</span></div><div class="item-desc">Tropikal şeftali, çiçeksi, kavun</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Beloya Oro Yeast Natural</span><span class="item-price">200,00₺</span></div><div class="item-desc">Yasemin, vanilya, armut, liçi, çilek, muz</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Uraga Oro</span><span class="item-price">200,00₺</span></div><div class="item-desc">Vanilya, çilek, muz, tropik meyveler</div></div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="sub-category">
+                        <summary>Super Special Coffee Brews (Premium & Fermente Serisi)</summary>
+                        <div class="sub-category-content">
+                            <div class="menu-grid">
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Risaralda</span><span class="item-price">220,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> meyvemsi tatlı, yeşil nane. <strong>Damakta:</strong> dağ çileği, yoğun çilek reçeli. <strong>Bitişte:</strong> çikolata, yoğun ve kompleks</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Rodrigo Sanchez Pina Colada</span><span class="item-price">260,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> vanilya, çikolata tatlılığı. <strong>Damakta:</strong> ananas, hindistan cevizi. <strong>Bitişte:</strong> likör, tropik meyveler</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Brezilya Luiz Garcia</span><span class="item-price">240,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> meyvemsi tatlı, yeşil nane. <strong>Damakta:</strong> dağ çileği, yoğun çilek reçeli. <strong>Bitişte:</strong> çikolata, yoğun ve kompleks</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Santa Monica Jairo Arcila</span><span class="item-price">260,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> meyvemsi tatlı, yeşil nane. <strong>Damakta:</strong> dağ çileği, yoğun çilek reçeli. <strong>Bitişte:</strong> çikolata, yoğun ve kompleks</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Tolima Geisha</span><span class="item-price">260,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> meyvemsi tatlı, yeşil nane. <strong>Damakta:</strong> dağ çileği, yoğun çilek reçeli. <strong>Bitişte:</strong> çikolata, yoğun ve kompleks</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Monteblanco Ex Limited</span><span class="item-price">240,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> sarı meyve salatası. <strong>Damakta:</strong> kavunlu milkshake, muzlu sakız. <strong>Bitişte:</strong> ananas, şeftali, nektarin</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Damo Anaerobik Natural</span><span class="item-price">280,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> kırmızı orman meyveleri, egzotik. <strong>Damakta:</strong> böğürtlen, vişne, karadut, malbec şarabı. <strong>Bitişte:</strong> mango, narenciye, çarkıfelek meyvesi</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Java Abisinya</span><span class="item-price">240,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> meyvemsi tatlı, yeşil nane. <strong>Damakta:</strong> dağ çileği, yoğun çilek reçeli. <strong>Bitişte:</strong> çikolata, yoğun ve kompleks</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Las Palmas Co-Fermantation Strawberry</span><span class="item-price">280,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> kuru çilek, yabanmersini. <strong>Damakta:</strong> karadut, vanilya, kuru çilek marmelatı. <strong>Bitişte:</strong> kırmızı meyve salatası</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya San Adolfo Geisha</span><span class="item-price">240,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> çiçek buketi, hanımeli notaları. <strong>Damakta:</strong> şeftali, mango. <strong>Bitişte:</strong> güçlü yasemin</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya La Sirena Osmotic Fermantation</span><span class="item-price">300,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> tamek meyve suyu, oolong çayı. <strong>Damakta:</strong> kayısı reçeli, olgun şeftali, tek çekirdekli sarı meyveler. <strong>Bitiş:</strong> esmer şeker, akçaağaç şurubu</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Hawai Kona Prime</span><span class="item-price">240,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> meyvemsi tatlı, yeşil nane. <strong>Damakta:</strong> dağ çileği, yoğun çilek reçeli. <strong>Bitişte:</strong> çikolata, yoğun ve kompleks</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya El Diviso Ombligon</span><span class="item-price">300,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> kırmızı meyve aromaları. <strong>Damakta:</strong> naneli sakız, haribo şeker. <strong>Bitişte:</strong> çilekli lolipop, şeker tatlılığı</div></div>
+                            </div>
+                        </div>
+                    </details>
+
+                </div>
+            </details>
+
+            <details class="main-category">
+                <summary>2. Sıcak İçecekler</summary>
+                <div class="main-category-content">
+                    
+                    <details class="sub-category">
+                        <summary>Espresso Bazlı Klasikler</summary>
+                        <div class="sub-category-content">
+                            <div class="menu-grid">
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Espresso</span><span class="item-price">130,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Double Espresso</span><span class="item-price">135,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Cortado</span><span class="item-price">145,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Americano</span><span class="item-price">150,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Cafe Latte</span><span class="item-price">150,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Latte Macchiato</span><span class="item-price">150,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Cappuccino</span><span class="item-price">150,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Flat White</span><span class="item-price">155,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Caramel Macchiato</span><span class="item-price">155,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Chai Tea Latte</span><span class="item-price">155,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Ristretto Bianco</span><span class="item-price">160,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Bio Americano</span><span class="item-price">160,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Mocha</span><span class="item-price">165,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">White Mocha (İsteğe bağlı tarçın)</span><span class="item-price">165,00₺</span></div></div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="sub-category">
+                        <summary>3. Nesil Demlemeler & Geleneksel</summary>
+                        <div class="sub-category-content">
+                            <div class="menu-grid">
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Türk Kahvesi</span><span class="item-price">125,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Red Eye</span><span class="item-price">155,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Black Eye</span><span class="item-price">165,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Filtre Kahve</span><span class="item-price">170,00₺</span></div></div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="sub-category">
+                        <summary>Avusturya Klasikleri</summary>
+                        <div class="sub-category-content">
+                            <div class="menu-grid">
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Franzıskaner</span><span class="item-price">180,00₺</span></div><div class="item-desc">7gr toblerone, 30ml espresso(single), süt, el yapımı krema</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kalschıtzky</span><span class="item-price">180,00₺</span></div><div class="item-desc">6gr bal, 30ml espresso(single), süt, el yapımı krema</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kaldı</span><span class="item-price">180,00₺</span></div><div class="item-desc">8gr orman meyvesi püresi, 30ml espresso(single), süt, el yapımı krema</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Mozart</span><span class="item-price">180,00₺</span></div><div class="item-desc">7gr eritilmiş beyaz çikolata, 30ml espresso(single), süt, el yapımı krema</div></div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="sub-category">
+                        <summary>Koko Spesiyalleri</summary>
+                        <div class="sub-category-content">
+                            <div class="menu-grid">
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Koko Toffee Nut</span><span class="item-price">180,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Koko Pumpkin</span><span class="item-price">180,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Koko Mint Choco</span><span class="item-price">180,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Koko Cookie Latte</span><span class="item-price">180,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Koko Irish Cream Latte</span><span class="item-price">180,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Koko Salted Caramel</span><span class="item-price">180,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Koko Nutella</span><span class="item-price">190,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Koko Kinder</span><span class="item-price">190,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Koko Pistachio Latte</span><span class="item-price">195,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Koko Martini'siz Martini</span><span class="item-price">200,00₺</span></div></div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="sub-category">
+                        <summary>Nitelikli & Klasik Sıcak Çaylar</summary>
+                        <div class="sub-category-content">
+                            <div class="menu-grid">
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Klasik Çay</span><span class="item-price">65,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Red Berry</span><span class="item-price">165,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Last Unicorn</span><span class="item-price">165,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Cold Play</span><span class="item-price">165,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Summer Time</span><span class="item-price">165,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Yeni Yıl</span><span class="item-price">165,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Tea'na Colada</span><span class="item-price">165,00₺</span></div></div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="sub-category">
+                        <summary>Kahve Dışı Sıcak Lezzetler</summary>
+                        <div class="sub-category-content">
+                            <div class="menu-grid">
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Ballı Süt</span><span class="item-price">145,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Salep</span><span class="item-price">180,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Sıcak Çikolata</span><span class="item-price">180,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Beyaz Sıcak Çikolata</span><span class="item-price">180,00₺</span></div></div>
+                            </div>
+                        </div>
+                    </details>
+
+                </div>
+            </details>
+
+            <details class="main-category">
+                <summary>3. Soğuk İçecekler</summary>
+                <div class="main-category-content">
+                    
+                    <details class="sub-category">
+                        <summary>Buzlu Espresso Bazlı Kahveler</summary>
+                        <div class="sub-category-content">
+                            <div class="menu-grid">
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Cortado</span><span class="item-price">130,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Latte</span><span class="item-price">135,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Latte Macchiato</span><span class="item-price">135,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Americano</span><span class="item-price">135,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Flat White</span><span class="item-price">140,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Caramel Macchiato</span><span class="item-price">140,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Chai Tea Latte</span><span class="item-price">140,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Bio Americano</span><span class="item-price">145,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Mocha</span><span class="item-price">150,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Beyaz Mocha</span><span class="item-price">150,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Affogato</span><span class="item-price">195,00₺</span></div></div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="sub-category">
+                        <summary>3. Nesil Soğuk Demlemeler (Cold Brews)</summary>
+                        <div class="sub-category-content">
+                            <div class="menu-grid">
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Black Eye</span><span class="item-price">140,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Red Eye</span><span class="item-price">145,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Dead Eye</span><span class="item-price">150,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Filtre Kahve</span><span class="item-price">160,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Hawaii Cold Brew</span><span class="item-price">165,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Cold Brew Latte</span><span class="item-price">175,00₺</span></div></div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="sub-category">
+                        <summary>Frappe Dünyası (Kahve Özlü)</summary>
+                        <div class="sub-category-content">
+                            <div class="menu-grid">
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Espresso Frappe</span><span class="item-price">175,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Beyaz Çikolatalı Frappe</span><span class="item-price">175,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Karamel Frappe</span><span class="item-price">175,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Toffee Nut Frappe</span><span class="item-price">175,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Pumpkin Frappe</span><span class="item-price">175,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Koko Kinder Frappe</span><span class="item-price">175,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Koko Schokolade Frappe</span><span class="item-price">175,00₺</span></div></div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="sub-category">
+                        <summary>Frappe Dünyası (Süt Özlü / Kahvesiz)</summary>
+                        <div class="sub-category-content">
+                            <div class="menu-grid">
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Vanilya Frappe</span><span class="item-price">165,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Frambuaz Frappe</span><span class="item-price">165,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Çilek Frappe</span><span class="item-price">165,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Karamel Frappe</span><span class="item-price">165,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Muz Frappe</span><span class="item-price">165,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kinder Frappe</span><span class="item-price">165,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Toffee Nut Frappe</span><span class="item-price">165,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Chai Tea Latte Frappe</span><span class="item-price">165,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Schokolade Frappe</span><span class="item-price">165,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Çikolatalı Frappe</span><span class="item-price">165,00₺</span></div></div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="sub-category">
+                        <summary>Milkshake & El Yapımı Soğuk Çaylar</summary>
+                        <div class="sub-category-content">
+                            <div class="menu-grid">
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Milkshake (Çikolata, Çilek, Muz)</span><span class="item-price">190,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Kırmızı Çay (Şeftali, Frambuaz, Mango)</span><span class="item-price">170,00₺</span></div><div class="item-desc">2 Bardak servis edilir</div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Naneli Yeşil Çay (Şeftali, Frambuaz, Mango)</span><span class="item-price">170,00₺</span></div><div class="item-desc">2 Bardak servis edilir</div></div>
+                            </div>
+                        </div>
+                    </details>
+                    
+                    <details class="sub-category">
+                        <summary>Meşrubatlar</summary>
+                        <div class="sub-category-content">
+                            <div class="menu-grid">
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Su</span><span class="item-price">45,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Maden Suyu</span><span class="item-price">60,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Uludağ Gazoz</span><span class="item-price">65,00₺</span></div></div>
+                                <div class="menu-item"><div class="item-header"><span class="item-name">Avşar Meyveli Soda</span><span class="item-price">65,00₺</span></div></div>
+                            </div>
+                        </div>
+                    </details>
+
+                </div>
+            </details>
+
+            <details class="main-category">
+                <summary>4. Ekstralar</summary>
+                <div class="main-category-content">
+                    <div class="menu-grid">
+                        <div class="menu-item"><div class="item-header"><span class="item-name">Espresso Shot</span><span class="item-price">80,00₺</span></div></div>
+                        <div class="menu-item"><div class="item-header"><span class="item-name">Şurup</span><span class="item-price">80,00₺</span></div></div>
+                        <div class="menu-item"><div class="item-header"><span class="item-name">Krema</span><span class="item-price">80,00₺</span></div></div>
+                        <div class="menu-item"><div class="item-header"><span class="item-name">Bal</span><span class="item-price">80,00₺</span></div></div>
+                        <div class="menu-item"><div class="item-header"><span class="item-name">Süt</span><span class="item-price">80,00₺</span></div></div>
+                    </div>
+                </div>
+            </details>
+        </div>
         <div class="about-section">
             <div class="about-text">
                 <h2>Hakkımızda</h2>
@@ -700,279 +1019,6 @@
                 <img src="Kokopelli1.png" alt="Kokopelli Coffee Co. İç Mekan">
             </div>
         </div>
-
-        <h2 class="menu-title">Menü</h2>
-
-        <details class="main-category">
-            <summary>1. Yöresel ve Nitelikli Kahveler</summary>
-            <div class="main-category-content">
-                
-                <details class="sub-category">
-                    <summary>Special Coffee Brews (Nitelikli Çekirdekler)</summary>
-                    <div class="sub-category-content">
-                        <div class="menu-grid">
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Brezilya High Mogiano</span><span class="item-price">170,00₺</span></div><div class="item-desc">Kavrulmuş badem, kakao, portakal, karamel</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Uraga Anaerobic Natural</span><span class="item-price">200,00₺</span></div><div class="item-desc">Liçi, kiraz, limon, çilekli yoğurt, çikolata parçacıkları</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Brezilya Mantiquera</span><span class="item-price">170,00₺</span></div><div class="item-desc">Kakao, sütlü çikolata, mandalina, süt reçeli</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Gayo Sesongot</span><span class="item-price">200,00₺</span></div><div class="item-desc">Karadut, orman meyveleri, böğürtlen, yeşil zeytin, kestane</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kosta Rika El Quizarra</span><span class="item-price">170,00₺</span></div><div class="item-desc">Şeftali, portakal, kakule, kayısı, hafif çiçeksi, çikolatalı kek</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Bona Zuria</span><span class="item-price">200,00₺</span></div><div class="item-desc">Şarapsı, kırmızı elma, kırmızı erik, bitter çikolata</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Brezilya Chelbesa</span><span class="item-price">180,00₺</span></div><div class="item-desc">Lime, ahududu, bal, vanilya, çiçeksi</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Guji Dimtu</span><span class="item-price">200,00₺</span></div><div class="item-desc">Şeftali, portakal, çiçeksi, frambuaz, lavanta</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Brezilya Sitio Cafundo Natural</span><span class="item-price">180,00₺</span></div><div class="item-desc">Çikolata, kakao, fındık, karamel</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Kaffa Gudina</span><span class="item-price">210,00₺</span></div><div class="item-desc">Üzüm reçeli, şarapsı, kırmızı erik, incir, şampanya</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Honduras Carlos Mejia</span><span class="item-price">180,00₺</span></div><div class="item-desc">Böğürtlen, erik</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Koke</span><span class="item-price">210,00₺</span></div><div class="item-desc">Manolya, kızılcık, böğürtlen, kakao nibi, vişne</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya İdido Prime</span><span class="item-price">180,00₺</span></div><div class="item-desc">Kiraz, rom, yasemin, bergamot, turunçgil</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Santiago Noriega Washed/Anaerobic</span><span class="item-price">210,00₺</span></div><div class="item-desc">Beyaz çiçekler, muzlu kek, kavun, kayısı, ananas</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Nicaragua Las Segovias</span><span class="item-price">180,00₺</span></div><div class="item-desc">Damla çikolata, kuru erik, ceviz, karamel, krema tatlılığı</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Endonezya Lestari</span><span class="item-price">220,00₺</span></div><div class="item-desc">Çiçek balı, sümbül, yasemin, frambuazlı danish</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kosta Rika Las Lajas</span><span class="item-price">180,00₺</span></div><div class="item-desc">Limon otu, mandalina, şeftali, kırmızı elma, bademli çikolata, likör</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Monica Rodriguez Rojas Las Acacias Natural</span><span class="item-price">220,00₺</span></div><div class="item-desc">Tropik meyveler, mango, frambuaz, pamuk şekeri, yaban mersini</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Jose Hernan Quintero Honey Double Anaerobic</span><span class="item-price">200,00₺</span></div><div class="item-desc">Çiçeksi, kuşburnu, fındıklı pralin, elma, karadut</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Biloya</span><span class="item-price">230,00₺</span></div><div class="item-desc">Erik, kayısı, şekerleme, karadut</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kenya Moganjo</span><span class="item-price">200,00₺</span></div><div class="item-desc">İtalyan eriği, kara böğürtlen, cezerye, sütlü çikolata</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Sebastian Ramirez El Placer</span><span class="item-price">240,00₺</span></div><div class="item-desc">Baharatsı, çiçeksi, tropik meyveler, paprikalı doritos, meksika tacosu gibi</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Aricha</span><span class="item-price">200,00₺</span></div><div class="item-desc">Portakal, bal, yasemin, bergamot</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Guiterrez Family Monte Verde</span><span class="item-price">240,00₺</span></div><div class="item-desc">Zambak, orman meyvesi reçeli, bal, kremamsı</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Monica Rodriguez Rojas</span><span class="item-price">200,00₺</span></div><div class="item-desc">Bodrum mandalinası, kuru üzüm, mor çiçekler, ahududu reçeli</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Yaye</span><span class="item-price">240,00₺</span></div><div class="item-desc">Tropikal şeftali, çiçeksi, kavun</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Beloya Oro Yeast Natural</span><span class="item-price">200,00₺</span></div><div class="item-desc">Yasemin, vanilya, armut, liçi, çilek, muz</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Uraga Oro</span><span class="item-price">200,00₺</span></div><div class="item-desc">Vanilya, çilek, muz, tropik meyveler</div></div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="sub-category">
-                    <summary>Super Special Coffee Brews (Premium & Fermente Serisi)</summary>
-                    <div class="sub-category-content">
-                        <div class="menu-grid">
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Risaralda</span><span class="item-price">220,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> meyvemsi tatlı, yeşil nane. <strong>Damakta:</strong> dağ çileği, yoğun çilek reçeli. <strong>Bitişte:</strong> çikolata, yoğun ve kompleks</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Rodrigo Sanchez Pina Colada</span><span class="item-price">260,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> vanilya, çikolata tatlılığı. <strong>Damakta:</strong> ananas, hindistan cevizi. <strong>Bitişte:</strong> likör, tropik meyveler</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Brezilya Luiz Garcia</span><span class="item-price">240,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> meyvemsi tatlı, yeşil nane. <strong>Damakta:</strong> dağ çileği, yoğun çilek reçeli. <strong>Bitişte:</strong> çikolata, yoğun ve kompleks</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Santa Monica Jairo Arcila</span><span class="item-price">260,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> meyvemsi tatlı, yeşil nane. <strong>Damakta:</strong> dağ çileği, yoğun çilek reçeli. <strong>Bitişte:</strong> çikolata, yoğun ve kompleks</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Tolima Geisha</span><span class="item-price">260,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> meyvemsi tatlı, yeşil nane. <strong>Damakta:</strong> dağ çileği, yoğun çilek reçeli. <strong>Bitişte:</strong> çikolata, yoğun ve kompleks</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Monteblanco Ex Limited</span><span class="item-price">240,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> sarı meyve salatası. <strong>Damakta:</strong> kavunlu milkshake, muzlu sakız. <strong>Bitişte:</strong> ananas, şeftali, nektarin</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Etiyopya Damo Anaerobik Natural</span><span class="item-price">280,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> kırmızı orman meyveleri, egzotik. <strong>Damakta:</strong> böğürtlen, vişne, karadut, malbec şarabı. <strong>Bitişte:</strong> mango, narenciye, çarkıfelek meyvesi</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Java Abisinya</span><span class="item-price">240,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> meyvemsi tatlı, yeşil nane. <strong>Damakta:</strong> dağ çileği, yoğun çilek reçeli. <strong>Bitişte:</strong> çikolata, yoğun ve kompleks</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya Las Palmas Co-Fermantation Strawberry</span><span class="item-price">280,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> kuru çilek, yabanmersini. <strong>Damakta:</strong> karadut, vanilya, kuru çilek marmelatı. <strong>Bitişte:</strong> kırmızı meyve salatası</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya San Adolfo Geisha</span><span class="item-price">240,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> çiçek buketi, hanımeli notaları. <strong>Damakta:</strong> şeftali, mango. <strong>Bitişte:</strong> güçlü yasemin</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya La Sirena Osmotic Fermantation</span><span class="item-price">300,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> tamek meyve suyu, oolong çayı. <strong>Damakta:</strong> kayısı reçeli, olgun şeftali, tek çekirdekli sarı meyveler. <strong>Bitiş:</strong> esmer şeker, akçaağaç şurubu</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Hawai Kona Prime</span><span class="item-price">240,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> meyvemsi tatlı, yeşil nane. <strong>Damakta:</strong> dağ çileği, yoğun çilek reçeli. <strong>Bitişte:</strong> çikolata, yoğun ve kompleks</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kolombiya El Diviso Ombligon</span><span class="item-price">300,00₺</span></div><div class="item-desc"><strong>Burunda:</strong> kırmızı meyve aromaları. <strong>Damakta:</strong> naneli sakız, haribo şeker. <strong>Bitişte:</strong> çilekli lolipop, şeker tatlılığı</div></div>
-                        </div>
-                    </div>
-                </details>
-
-            </div>
-        </details>
-
-        <details class="main-category">
-            <summary>2. Sıcak İçecekler</summary>
-            <div class="main-category-content">
-                
-                <details class="sub-category">
-                    <summary>Espresso Bazlı Klasikler</summary>
-                    <div class="sub-category-content">
-                        <div class="menu-grid">
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Espresso</span><span class="item-price">130,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Double Espresso</span><span class="item-price">135,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Cortado</span><span class="item-price">145,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Americano</span><span class="item-price">150,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Cafe Latte</span><span class="item-price">150,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Latte Macchiato</span><span class="item-price">150,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Cappuccino</span><span class="item-price">150,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Flat White</span><span class="item-price">155,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Caramel Macchiato</span><span class="item-price">155,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Chai Tea Latte</span><span class="item-price">155,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Ristretto Bianco</span><span class="item-price">160,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Bio Americano</span><span class="item-price">160,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Mocha</span><span class="item-price">165,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">White Mocha (İsteğe bağlı tarçın)</span><span class="item-price">165,00₺</span></div></div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="sub-category">
-                    <summary>3. Nesil Demlemeler & Geleneksel</summary>
-                    <div class="sub-category-content">
-                        <div class="menu-grid">
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Türk Kahvesi</span><span class="item-price">125,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Red Eye</span><span class="item-price">155,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Black Eye</span><span class="item-price">165,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Filtre Kahve</span><span class="item-price">170,00₺</span></div></div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="sub-category">
-                    <summary>Avusturya Klasikleri</summary>
-                    <div class="sub-category-content">
-                        <div class="menu-grid">
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Franzıskaner</span><span class="item-price">180,00₺</span></div><div class="item-desc">7gr toblerone, 30ml espresso(single), süt, el yapımı krema</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kalschıtzky</span><span class="item-price">180,00₺</span></div><div class="item-desc">6gr bal, 30ml espresso(single), süt, el yapımı krema</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kaldı</span><span class="item-price">180,00₺</span></div><div class="item-desc">8gr orman meyvesi püresi, 30ml espresso(single), süt, el yapımı krema</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Mozart</span><span class="item-price">180,00₺</span></div><div class="item-desc">7gr eritilmiş beyaz çikolata, 30ml espresso(single), süt, el yapımı krema</div></div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="sub-category">
-                    <summary>Koko Spesiyalleri</summary>
-                    <div class="sub-category-content">
-                        <div class="menu-grid">
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Toffee Nut</span><span class="item-price">180,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Pumpkin</span><span class="item-price">180,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Mint Choco</span><span class="item-price">180,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Cookie Latte</span><span class="item-price">180,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Irish Cream Latte</span><span class="item-price">180,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Salted Caramel</span><span class="item-price">180,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Nutella</span><span class="item-price">190,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Kinder</span><span class="item-price">190,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Pistachio Latte</span><span class="item-price">195,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Martini'siz Martini</span><span class="item-price">200,00₺</span></div></div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="sub-category">
-                    <summary>Nitelikli & Klasik Sıcak Çaylar</summary>
-                    <div class="sub-category-content">
-                        <div class="menu-grid">
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Klasik Çay</span><span class="item-price">65,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Red Berry</span><span class="item-price">165,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Last Unicorn</span><span class="item-price">165,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Cold Play</span><span class="item-price">165,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Summer Time</span><span class="item-price">165,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Yeni Yıl</span><span class="item-price">165,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Tea'na Colada</span><span class="item-price">165,00₺</span></div></div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="sub-category">
-                    <summary>Kahve Dışı Sıcak Lezzetler</summary>
-                    <div class="sub-category-content">
-                        <div class="menu-grid">
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Ballı Süt</span><span class="item-price">145,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Salep</span><span class="item-price">180,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Sıcak Çikolata</span><span class="item-price">180,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Beyaz Sıcak Çikolata</span><span class="item-price">180,00₺</span></div></div>
-                        </div>
-                    </div>
-                </details>
-
-            </div>
-        </details>
-
-        <details class="main-category">
-            <summary>3. Soğuk İçecekler</summary>
-            <div class="main-category-content">
-                
-                <details class="sub-category">
-                    <summary>Buzlu Espresso Bazlı Kahveler</summary>
-                    <div class="sub-category-content">
-                        <div class="menu-grid">
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Cortado</span><span class="item-price">130,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Latte</span><span class="item-price">135,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Latte Macchiato</span><span class="item-price">135,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Americano</span><span class="item-price">135,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Flat White</span><span class="item-price">140,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Caramel Macchiato</span><span class="item-price">140,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Chai Tea Latte</span><span class="item-price">140,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Bio Americano</span><span class="item-price">145,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Mocha</span><span class="item-price">150,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Beyaz Mocha</span><span class="item-price">150,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Affogato</span><span class="item-price">195,00₺</span></div></div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="sub-category">
-                    <summary>3. Nesil Soğuk Demlemeler (Cold Brews)</summary>
-                    <div class="sub-category-content">
-                        <div class="menu-grid">
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Black Eye</span><span class="item-price">140,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Red Eye</span><span class="item-price">145,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Dead Eye</span><span class="item-price">150,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Buzlu Filtre Kahve</span><span class="item-price">160,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Hawaii Cold Brew</span><span class="item-price">165,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Cold Brew Latte</span><span class="item-price">175,00₺</span></div></div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="sub-category">
-                    <summary>Frappe Dünyası (Kahve Özlü)</summary>
-                    <div class="sub-category-content">
-                        <div class="menu-grid">
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Espresso Frappe</span><span class="item-price">175,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Beyaz Çikolatalı Frappe</span><span class="item-price">175,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Karamel Frappe</span><span class="item-price">175,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Toffee Nut Frappe</span><span class="item-price">175,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Pumpkin Frappe</span><span class="item-price">175,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Kinder Frappe</span><span class="item-price">175,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Koko Schokolade Frappe</span><span class="item-price">175,00₺</span></div></div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="sub-category">
-                    <summary>Frappe Dünyası (Süt Özlü / Kahvesiz)</summary>
-                    <div class="sub-category-content">
-                        <div class="menu-grid">
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Vanilya Frappe</span><span class="item-price">165,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Frambuaz Frappe</span><span class="item-price">165,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Çilek Frappe</span><span class="item-price">165,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Karamel Frappe</span><span class="item-price">165,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Muz Frappe</span><span class="item-price">165,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kinder Frappe</span><span class="item-price">165,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Toffee Nut Frappe</span><span class="item-price">165,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Chai Tea Latte Frappe</span><span class="item-price">165,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Schokolade Frappe</span><span class="item-price">165,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Çikolatalı Frappe</span><span class="item-price">165,00₺</span></div></div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="sub-category">
-                    <summary>Milkshake & El Yapımı Soğuk Çaylar</summary>
-                    <div class="sub-category-content">
-                        <div class="menu-grid">
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Milkshake (Çikolata, Çilek, Muz)</span><span class="item-price">190,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Kırmızı Çay (Şeftali, Frambuaz, Mango)</span><span class="item-price">170,00₺</span></div><div class="item-desc">2 Bardak servis edilir</div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Naneli Yeşil Çay (Şeftali, Frambuaz, Mango)</span><span class="item-price">170,00₺</span></div><div class="item-desc">2 Bardak servis edilir</div></div>
-                        </div>
-                    </div>
-                </details>
-                
-                <details class="sub-category">
-                    <summary>Meşrubatlar</summary>
-                    <div class="sub-category-content">
-                        <div class="menu-grid">
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Su</span><span class="item-price">45,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Maden Suyu</span><span class="item-price">60,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Uludağ Gazoz</span><span class="item-price">65,00₺</span></div></div>
-                            <div class="menu-item"><div class="item-header"><span class="item-name">Avşar Meyveli Soda</span><span class="item-price">65,00₺</span></div></div>
-                        </div>
-                    </div>
-                </details>
-
-            </div>
-        </details>
-
-        <details class="main-category">
-            <summary>4. Ekstralar</summary>
-            <div class="main-category-content">
-                <div class="menu-grid">
-                    <div class="menu-item"><div class="item-header"><span class="item-name">Espresso Shot</span><span class="item-price">80,00₺</span></div></div>
-                    <div class="menu-item"><div class="item-header"><span class="item-name">Şurup</span><span class="item-price">80,00₺</span></div></div>
-                    <div class="menu-item"><div class="item-header"><span class="item-name">Krema</span><span class="item-price">80,00₺</span></div></div>
-                    <div class="menu-item"><div class="item-header"><span class="item-name">Bal</span><span class="item-price">80,00₺</span></div></div>
-                    <div class="menu-item"><div class="item-header"><span class="item-name">Süt</span><span class="item-price">80,00₺</span></div></div>
-                </div>
-            </div>
-        </details>
 
         <div class="info-grid">
             <div class="info-card">
@@ -1036,6 +1082,8 @@
             © 2018 Kokopelli Coffee Co. - Tüm Hakları Saklıdır.
         </div>
     </footer>
+
+    <a href="#menu-section" class="mobile-menu-btn">Menüyü Gör ☕</a>
 
 </body>
 </html>
