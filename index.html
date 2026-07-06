@@ -62,148 +62,132 @@
             padding: 0 20px;
         }
 
+        /* --- MASAÜSTÜ: Edge-to-Edge (Tam Genişlik) Tasarım --- */
         .landing-frame {
-            margin: 40px auto 60px;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 40px;
-            box-shadow: 0 25px 50px rgba(10, 107, 151, 0.08);
+            width: 100vw;
+            margin-left: calc(-50vw + 50%); /* Container'dan taşıp tam ekran olması için */
+            margin-top: 0;
+            margin-bottom: 60px;
+            background: #fff;
             position: relative;
             z-index: 2;
-            border: 1px solid rgba(10, 107, 151, 0.1);
+            border-bottom: 1px solid rgba(10, 107, 151, 0.1);
         }
 
-        /* --- YENİ BENTO GRID TASARIMI --- */
         .bento-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto auto;
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
         }
 
-        .bento-item {
-            border-radius: 24px;
-            overflow: hidden;
-            position: relative;
-            text-decoration: none;
-            color: var(--dark-blue);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        .bento-item:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(10, 107, 151, 0.15);
-        }
-
-        /* Sol Üst: Logo ve Slogan (Tıklanmaz, Sadece Görsel) */
+        /* Üst Menü / Logo Alanı */
         .brand-box {
+            flex: 0 0 100%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            padding: 25px 20px;
+            background: var(--bg-color);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
             text-align: center;
-            padding: 30px 20px;
-            background: transparent;
-            box-shadow: none;
-        }
-        
-        .brand-box:hover {
-            transform: none;
-            box-shadow: none;
         }
 
         .logo-container img {
-            max-width: 220px;
-            height: auto;
-            margin-bottom: 15px;
+            height: 85px; /* Masaüstü için temiz, orantılı boyut */
+            width: auto;
+            margin-bottom: 5px;
             position: relative;
-            z-index: 3; 
+            z-index: 3;
         }
 
         @keyframes slideFromLogo {
-            0% { transform: translateY(-40px); opacity: 0; }
+            0% { transform: translateY(-30px); opacity: 0; }
             100% { transform: translateY(0); opacity: 1; }
         }
 
         .slogan {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: 2px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--dark-blue);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+            color: var(--text-light);
+            margin: 0;
             opacity: 0;
-            animation: slideFromLogo 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            animation: slideFromLogo 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards;
             position: relative;
             z-index: 2;
         }
 
-        /* Sağ Taraf: Dikdörtgen Mekan Görseli */
-        .tall-box {
-            grid-column: 2 / 3;
-            grid-row: 1 / 3;
-            min-height: 450px;
-        }
-
-        /* Sol Alt: Yatay İçecek/Menü Görseli */
-        .wide-box {
-            grid-column: 1 / 2;
-            grid-row: 2 / 3;
-            min-height: 250px;
+        /* Tam Ekran 50/50 Görsel Izgarası */
+        .image-box {
+            flex: 1; 
+            height: 75vh; 
+            position: relative;
+            overflow: hidden;
+            display: block;
+            background: #000;
         }
 
         .image-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
-            transition: transform 0.6s ease;
+            transition: transform 1.2s ease, opacity 0.5s;
+            opacity: 0.95;
         }
 
         .image-box:hover img {
             transform: scale(1.05);
+            opacity: 1;
         }
 
-        /* Tıklanabilir İndikatör (Rozet) */
+        /* Yüzen İşlem Rozetleri (Masaüstü) */
         .bento-overlay {
             position: absolute;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 12px 20px;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 25px 15px 35px;
             border-radius: 50px;
             backdrop-filter: blur(5px);
             font-weight: 600;
             font-family: 'Poppins', sans-serif;
             color: var(--dark-blue);
+            min-width: 280px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .image-box:hover .bento-overlay {
+            background: #fff;
+            transform: translateX(-50%) translateY(-5px);
         }
 
         .arrow-icon {
             background: var(--accent);
             color: #fff;
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             font-weight: bold;
             font-size: 1.2rem;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease;
         }
 
         .image-box:hover .arrow-icon {
             transform: rotate(45deg);
         }
 
-        /* Menu Section */
+        /* Diğer Sayfa Bileşenleri */
         .menu-wrapper {
             position: relative;
             z-index: 2;
@@ -253,13 +237,8 @@
             transition: background 0.3s ease;
         }
 
-        details.main-category > summary::-webkit-details-marker {
-            display: none;
-        }
-
-        details.main-category > summary:hover {
-            background: var(--dark-blue);
-        }
+        details.main-category > summary::-webkit-details-marker { display: none; }
+        details.main-category > summary:hover { background: var(--dark-blue); }
 
         details.main-category > summary::after {
             content: '+';
@@ -273,10 +252,7 @@
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
         }
-
-        details.main-category[open] > summary::after {
-            content: '\2212';
-        }
+        details.main-category[open] > summary::after { content: '\2212'; }
 
         .main-category-content {
             padding: 20px;
@@ -307,22 +283,10 @@
             align-items: center;
         }
 
-        details.sub-category > summary::-webkit-details-marker {
-            display: none;
-        }
-
-        details.sub-category > summary::after {
-            content: '\25BC';
-            font-size: 0.9rem;
-        }
-
-        details.sub-category[open] > summary::after {
-            content: '\25B2';
-        }
-
-        .sub-category-content {
-            padding: 20px;
-        }
+        details.sub-category > summary::-webkit-details-marker { display: none; }
+        details.sub-category > summary::after { content: '\25BC'; font-size: 0.9rem; }
+        details.sub-category[open] > summary::after { content: '\25B2'; }
+        .sub-category-content { padding: 20px; }
 
         .menu-grid {
             display: grid;
@@ -372,11 +336,7 @@
             font-style: italic;
             line-height: 1.4;
         }
-        
-        .item-desc strong {
-            color: var(--accent);
-            font-weight: 600;
-        }
+        .item-desc strong { color: var(--accent); font-weight: 600; }
 
         .about-section {
             display: flex;
@@ -395,10 +355,7 @@
             scroll-margin-top: 40px;
         }
 
-        .about-text {
-            flex: 1 1 450px;
-            padding-right: 20px;
-        }
+        .about-text { flex: 1 1 450px; padding-right: 20px; }
 
         .about-text h2 {
             font-size: 2.2rem;
@@ -440,9 +397,7 @@
             transition: transform 0.5s ease;
         }
         
-        .about-images img:hover {
-            transform: scale(1.03); 
-        }
+        .about-images img:hover { transform: scale(1.03); }
         
         .award-banner {
             display: flex;
@@ -501,23 +456,15 @@
             color: var(--dark-blue);
         }
 
-        .info-list {
-            list-style: none;
-        }
-
+        .info-list { list-style: none; }
         .info-list li {
             padding: 8px 0;
             border-bottom: 1px solid #f0f0f0;
             font-size: 0.95rem;
         }
-        
-        .info-list li:last-child {
-            border-bottom: none;
-        }
+        .info-list li:last-child { border-bottom: none; }
 
-        .hours-list {
-            list-style: none;
-        }
+        .hours-list { list-style: none; }
         .hours-list li {
             display: flex;
             justify-content: space-between;
@@ -621,44 +568,64 @@
 
         @media (max-width: 1024px) {
             .menu-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+            .image-box { height: 50vh; }
         }
 
+        /* ---------------------------------- */
+        /* TELEFON (MOBİL) BENTO GRID UYUMU   */
+        /* ---------------------------------- */
         @media (max-width: 768px) {
-            body {
-                padding-bottom: 70px;
-            }
+            body { padding-bottom: 70px; }
 
             .landing-frame { 
+                width: auto;
+                margin: 20px 15px 30px; 
                 padding: 25px 15px; 
-                margin-top: 20px; 
                 border-radius: 25px; 
+                box-shadow: 0 15px 40px rgba(0,0,0,0.08);
             }
 
-            /* BENTO GRID - MOBİL DÜZENİ */
             .bento-grid {
+                display: grid;
                 grid-template-columns: 1fr;
                 grid-template-rows: auto auto auto;
-            }
-
-            .tall-box {
-                grid-column: 1 / -1;
-                grid-row: auto;
-                min-height: 350px;
-            }
-
-            .wide-box {
-                grid-column: 1 / -1;
-                grid-row: auto;
-                min-height: 250px;
+                gap: 20px;
             }
 
             .brand-box {
                 padding: 10px;
+                background: transparent;
+                border-bottom: none;
             }
+
+            .logo-container img { max-width: 220px; height: auto; }
 
             .slogan { 
                 font-size: 1.5rem; 
+                letter-spacing: 2px;
+                font-weight: 700;
+                color: var(--dark-blue);
                 margin-bottom: 10px; 
+            }
+
+            .image-box {
+                border-radius: 24px;
+                height: auto;
+                min-height: 300px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            }
+
+            .bento-overlay {
+                bottom: 15px;
+                left: 15px;
+                right: 15px;
+                transform: none;
+                min-width: auto;
+                padding: 12px 20px;
+            }
+
+            .image-box:hover .bento-overlay {
+                transform: none;
             }
 
             .mobile-menu-btn {
@@ -680,9 +647,7 @@
                 font-size: 1rem;
             }
 
-            .mobile-menu-btn:active {
-                transform: scale(0.95);
-            }
+            .mobile-menu-btn:active { transform: scale(0.95); }
 
             .about-section { 
                 flex-direction: column; 
@@ -703,11 +668,7 @@
                 transform: translateX(-50%); 
             }
 
-            .about-images {
-                flex: 1 1 100%; 
-                width: 100%;
-            }
-
+            .about-images { flex: 1 1 100%; width: 100%; }
             .about-text h2 { font-size: 1.8rem; }
 
             .award-banner { 
@@ -716,70 +677,22 @@
                 padding: 20px 15px;
             }
 
-            .award-banner img { 
-                margin-right: 0; 
-                margin-bottom: 15px; 
-            }
+            .award-banner img { margin-right: 0; margin-bottom: 15px; }
+            .menu-title { font-size: 2rem; margin: 40px 0 20px; }
 
-            .menu-title { 
-                font-size: 2rem; 
-                margin: 40px 0 20px; 
-            }
+            details.main-category > summary { font-size: 1.2rem; padding: 12px 15px; }
+            details.sub-category > summary { font-size: 1.05rem; padding: 10px 15px; }
+            .main-category-content, .sub-category-content { padding: 10px; }
+            .menu-grid { grid-template-columns: 1fr; gap: 15px; }
 
-            details.main-category > summary { 
-                font-size: 1.2rem; 
-                padding: 12px 15px; 
-            }
+            .item-header { flex-direction: column; align-items: flex-start; gap: 5px; }
+            .item-price { align-self: flex-start; font-size: 1.1rem; }
 
-            details.sub-category > summary { 
-                font-size: 1.05rem; 
-                padding: 10px 15px; 
-            }
-
-            .main-category-content, .sub-category-content {
-                padding: 10px;
-            }
-
-            .menu-grid { 
-                grid-template-columns: 1fr; 
-                gap: 15px; 
-            }
-
-            .item-header { 
-                flex-direction: column; 
-                align-items: flex-start; 
-                gap: 5px; 
-            }
-            
-            .item-price { 
-                align-self: flex-start; 
-                font-size: 1.1rem;
-            }
-
-            .info-grid { 
-                grid-template-columns: 1fr; 
-                margin: 40px 0; 
-                gap: 20px; 
-            }
-
+            .info-grid { grid-template-columns: 1fr; margin: 40px 0; gap: 20px; }
             .info-card { padding: 20px; }
-
-            footer { 
-                padding: 40px 15px 20px; 
-                margin-top: 40px; 
-            }
-
-            .footer-content { 
-                grid-template-columns: 1fr; 
-                gap: 30px; 
-                text-align: center; 
-            }
-
-            .footer-col h3::after { 
-                left: 50%; 
-                transform: translateX(-50%); 
-            }
-
+            footer { padding: 40px 15px 20px; margin-top: 40px; }
+            .footer-content { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+            .footer-col h3::after { left: 50%; transform: translateX(-50%); }
             .insta-link { justify-content: center; }
         }
     </style>
@@ -793,14 +706,14 @@
         <div class="landing-frame">
             <div class="bento-grid">
                 
-                <div class="bento-item brand-box">
+                <div class="brand-box">
                     <div class="logo-container">
                         <img src="image_fcf439.jpg" alt="Kokopelli Coffee Co. Logo">
                     </div>
                     <h1 class="slogan">Nitelikli Kahve Dükkanı</h1>
                 </div>
 
-                <a href="#about-section" class="bento-item image-box tall-box">
+                <a href="#about-section" class="image-box">
                     <img src="koko.jpg" alt="Kokopelli Atmosfer">
                     <div class="bento-overlay">
                         <span>Mekanı Keşfet</span>
@@ -808,7 +721,7 @@
                     </div>
                 </a>
 
-                <a href="#menu-section" class="bento-item image-box wide-box">
+                <a href="#menu-section" class="image-box">
                     <img src="icecek.jpg" alt="Kokopelli Menü">
                     <div class="bento-overlay">
                         <span>Menüyü İncele</span>
